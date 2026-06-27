@@ -2,6 +2,10 @@
 
 **Theme:** Eliminate entire classes of bugs before the application runs.
 
+> 🧪 **Hands-on, autograded.** This repo is a clone-and-run workspace: implement the `// TODO`s
+> in `src/`, run `npm test` for instant red→green feedback, and `npm run grade` for your score.
+> See **[EXERCISES.md](EXERCISES.md)**. Open in Codespaces for a zero-setup environment.
+
 You are a **TypeScript Engineer** on *Project Forge* (continuing from Modules 02–03), leading the move from fragile, untyped JavaScript to strict, type-safe code. This module treats TypeScript as an **engineering quality system**, not "JavaScript with types": you learn to model the business domain so that illegal states are unrepresentable, derive types from a single source of truth, handle uncertain data with unions and narrowing, validate boundaries with guards, and enforce a strict compiler standard — culminating in a real module migration.
 
 The ethos, in every lesson: **make illegal states unrepresentable**, **the compiler is your first reviewer**, and the golden rule — **a claim that doesn't type-check isn't true.** And `any` is never the fix.
