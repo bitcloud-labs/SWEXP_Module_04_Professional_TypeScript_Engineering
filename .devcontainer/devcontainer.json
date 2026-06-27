@@ -8,7 +8,7 @@
   "features": {
     "ghcr.io/devcontainers/features/github-cli:1": {}
   },
-  "postCreateCommand": "npm install -g typescript ts-node && echo '\\n=== Forge SWEXP environment ready ==='; git --version; node --version 2>/dev/null; echo 'Open README.md, then Lesson_00.md to begin.'",
+  "postCreateCommand": "npm install -g typescript ts-node && echo '\\n=== Forge SWEXP environment ready ==='; git --version; node --version 2>/dev/null; echo 'Open README.md, then pick an exercise under labs/ to begin.'",
   "customizations": {
     "vscode": {
       "extensions": [
