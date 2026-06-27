@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "lib": ["ES2022"],
+    "strict": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "noUncheckedIndexedAccess": true,
+    "noEmit": true,
+    "skipLibCheck": true,
+    "types": ["vitest/globals"]
+  },
+  "include": ["labs/**/src", "labs/**/tests", "assignments/**/src", "assignments/**/tests"],
+  "comment": "lab-06 has its own loose/strict tsconfigs (its starter intentionally fails strict), so it is excluded from the project-wide gate and checked separately by the grader.",
+  "exclude": ["labs/lab-06-tsconfig-strict"]
+}

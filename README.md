@@ -1,73 +1,55 @@
-# SWEXP Module 04 — Professional TypeScript Engineering
+# SWEXP Module 04 — Professional TypeScript Engineering · Starter Workspace
 
-**Theme:** Eliminate entire classes of bugs before the application runs.
+This repo is your **work-along workspace** for Module 04. The lessons live in the LMS; here you do the
+labs and the capstone: open an exercise, read its `README.md`, implement the `// TODO`s in its `src/`,
+run the tests, and submit.
 
-You are a **TypeScript Engineer** on *Project Forge* (continuing from Modules 02–03), leading the move from fragile, untyped JavaScript to strict, type-safe code. This module treats TypeScript as an **engineering quality system**, not "JavaScript with types": you learn to model the business domain so that illegal states are unrepresentable, derive types from a single source of truth, handle uncertain data with unions and narrowing, validate boundaries with guards, and enforce a strict compiler standard — culminating in a real module migration.
+> **The tests are the spec.** Each exercise's `tests/` describes exactly what your code must do — make
+> them pass without weakening the types (no `any`, no `as`, no `@ts-ignore`). No answer keys are shipped.
 
-The ethos, in every lesson: **make illegal states unrepresentable**, **the compiler is your first reviewer**, and the golden rule — **a claim that doesn't type-check isn't true.** And `any` is never the fix.
+## Quick start
 
-## How You Work Here
-
-| Step | What it means |
-|------|---------------|
-| Pick up a ticket | Each lesson is an engineering ticket (`DOMAIN-2001`, `UNION-3001`, …) with acceptance criteria |
-| Model first | Express the domain in types so the bad value can't be constructed |
-| Type-check | Run `tsc --noEmit` — the compiler is the test harness; legal compiles, illegal fails |
-| Read the diagnostics | Each `TSxxxx` code tells you exactly what claim failed and why |
-| Fix the cause | Correct the model/value/narrowing — never silence with `any`/`as`/`@ts-ignore` |
-| Verify AI | Draft → type-check (the compiler verifies) → log |
-
-## Learning Outcomes
-
-By the end you will be able to:
-- Set up and run the TypeScript compiler as an engineering instrument.
-- Use static typing to catch, at compile time, bugs that JavaScript only finds at runtime.
-- Model a business domain so that illegal states are unrepresentable.
-- Eliminate duplicate types by deriving them with generics and utility types.
-- Model uncertain data with union types and handle it with narrowing.
-- Build discriminated unions and validate untrusted input at the boundary with type guards.
-- Configure and enforce a strict `tsconfig` standard, and explain what each flag proves.
-- Migrate a legacy JavaScript module to strict, type-safe TypeScript with compiler-backed evidence.
-
-## Lesson Index
-
-| # | Lesson | Competency | Ticket |
-|---|--------|-----------|--------|
-| 0 | Welcome to Professional TypeScript Engineering | TypeScript Engineering Orientation | TS-1000 |
-| 1 | The Bug That JavaScript Couldn't Catch | Static Typing Fundamentals | TS-1010 |
-| 2 | Model the Business Domain | Domain Modeling | DOMAIN-2001 |
-| 3 | Eliminate Duplicate Types | Generics & Utility Types | GEN-2010 |
-| 4 | Model Uncertain Business Data | Union Types & Narrowing | UNION-3001 |
-| 5 | Safely Interpret API Responses | Type Guards & Discriminated Unions | GUARD-3010 |
-| 6 | Configure the Engineering Standard | tsconfig & Strict Mode | CONFIG-4001 |
-| 7 | Project Forge TypeScript Migration Capstone | Production TypeScript Migration | FORGE-9200 |
-
-The module flows through phases: **Foundations** (0–1) → **Modeling the Domain** (2–3) → **Handling Uncertainty** (4–5) → **The Engineering Standard** (6) → **Capstone** (7).
-
-## Repository Layout
-
-```
-.
-├── README.md                      # this file
-├── MODULE_SYLLABUS.md             # pacing, structure, deliverables
-├── LEARNER_GUIDE.md               # how to operate as a TypeScript engineer here
-├── INSTRUCTOR_GUIDE.md            # facilitation and assessment
-├── COMPETENCY_MATRIX.md           # lesson → competency → skills
-├── ASSESSMENT_RUBRIC.md           # grading weights and performance levels
-├── dashboard.html                 # interactive progress dashboard (open in a browser)
-├── Lesson_00.md … Lesson_07.md    # the 8 lessons
-├── labs/                          # hands-on labs (real .ts, type-checked with tsc)
-├── solutions/                     # worked solutions / answer keys
-├── resources/                     # type-system, domain-modeling, generics, unions, guards, tsconfig, migration + more
-├── assignments/                   # submission templates + capstone brief
-└── instructor-notes/              # per-lesson facilitation notes
+```bash
+npm install            # one time (already done in your LMS code-server workspace)
+npm test               # run every exercise's behaviour tests
+npm run test:types     # add the type-level checks (expectTypeOf)
+npm run check          # strict type-check — "the compiler is your first reviewer"
+npm run grade          # your score + per-exercise breakdown (what CI reports)
 ```
 
-## Getting Started
+Run a single exercise while you work on it:
 
-1. Read `resources/typescript-setup-guide.md` and get Node, `tsc`, and a TS-aware editor working (Lesson 0 / `labs/lab-00-setup.md`).
-2. Start your engineering notebook from `resources/engineering-notebook-template.md`.
-3. Open `dashboard.html` in your browser to track progress through the lessons and phases.
-4. Open `Lesson_00.md` and pick up your first ticket. Keep `resources/compiler-error-reference.md` and the cheatsheets open as you work.
+```bash
+npx vitest run labs/lab-04-unions-narrowing      # or any folder below
+npx vitest watch labs/lab-04-unions-narrowing    # re-run on save
+```
 
-**The compiler is the test harness.** Type-check with `tsc --noEmit` (whole project) or `tsc --noEmit -p tsconfig.strict.json`. Note `tsc file.ts` ignores `tsconfig.json` — use `-p` or no file argument. Exit `0` means clean; anything else is your first reviewer telling you something.
+## Exercises
+
+| Exercise | Folder | You implement |
+| --- | --- | --- |
+| Lab 00 — Setup | `labs/lab-00-setup` | first function; confirm the toolchain |
+| Lab 01 — Static typing | `labs/lab-01-static-typing` | typed `lineTotal` / `orderTotal` |
+| Lab 02 — Domain modelling | `labs/lab-02-domain-model` | `Order` union (illegal states unrepresentable) |
+| Lab 03 — Generics & utility types | `labs/lab-03-generics-utility` | derive types from `Order`; one generic wrapper |
+| Lab 04 — Unions & narrowing | `labs/lab-04-unions-narrowing` | `formatId` / `applyDiscount` / `previewNote` |
+| Lab 05 — Guards & discriminated unions | `labs/lab-05-guards-discriminated` | exhaustive `handle`; `isOrder` guard |
+| Lab 06 — Strict tsconfig | `labs/lab-06-tsconfig-strict` | fix 3 bugs strict mode catches |
+| Capstone — Migration | `assignments/capstone` | integrate it all into one strict module |
+
+Each folder is self-contained: a `README.md` (the brief), `src/` (starter code with `// TODO`s), and
+`tests/` (the spec). Reference cheatsheets are in [`resources/`](resources/).
+
+## How grading & submission work
+
+- Every exercise contributes tests — behaviour (`*.test.ts`) and, for the modelling labs, type-level
+  assertions (`*.test-d.ts`). `npm run grade` reports a per-exercise score plus a strict type-check gate.
+- **Submit** by committing your changes and pushing (or opening a pull request). The **Autograde** GitHub
+  Action runs the same grader, posts your score to the run summary, and comments it on any PR.
+- You're done when the score is **100%** and the type-check is clean.
+
+## The rules of this module
+
+- Make illegal states **unrepresentable** — model so bad values can't be constructed.
+- The compiler is your first reviewer — a claim that doesn't type-check isn't true.
+- `any` is never the fix. Neither is `as` at a trust boundary — use a type guard.
